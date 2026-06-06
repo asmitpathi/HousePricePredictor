@@ -1,48 +1,42 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
- <div class="login">
-	<h1>Boston House Price Prediction</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
-    	<input type="text" name="ZN" placeholder="ZN" required="required" /><br>
-        <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
-        <input type="text" name="CHAS" placeholder="CHAS" required="required" /><br>
-        <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
-        <input type="text" name="RM" placeholder="RM" required="required" /><br>
-        <input type="text" name="AGE" placeholder="Age" required="required" /><br>
-        <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
-        <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
-        <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
-        <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
-        <input type="text" name="B" placeholder="B" required="required" /><br>
-        <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
-
-       
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
-
+    <div class="container">
+        <div class="card">
+            <h1>House Price Prediction</h1>
+            <form action="{{ url_for('predict') }}" method="post">
+                <input type="number" step="any" name="CRIM" placeholder="CRIM" required>
+                <input type="number" step="any" name="ZN" placeholder="ZN" required>
+                <input type="number" step="any" name="INDUS" placeholder="INDUS" required>
+                <input type="number" step="any" name="CHAS" placeholder="CHAS" required>
+                <input type="number" step="any" name="NOX" placeholder="NOX" required>
+                <input type="number" step="any" name="RM" placeholder="RM" required>
+                <input type="number" step="any" name="AGE" placeholder="AGE" required>
+                <input type="number" step="any" name="DIS" placeholder="DIS" required>
+                <input type="number" step="any" name="RAD" placeholder="RAD" required>
+                <input type="number" step="any" name="TAX" placeholder="TAX" required>
+                <input type="number" step="any" name="PTRATIO" placeholder="PTRATIO" required>
+                <input type="number" step="any" name="B" placeholder="B" required>
+                <input type="number" step="any" name="LSTAT" placeholder="LSTAT" required>
+                <button type="submit">
+                    Predict House Price
+                </button>
+            </form>
+            {% if prediction_text %}
+            <div class="prediction">
+                {{ prediction_text }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
 </body>
+
 </html>
